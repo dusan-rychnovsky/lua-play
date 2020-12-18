@@ -1,6 +1,7 @@
-FROM        debian:8.0
+FROM        ubuntu:20.04
 ENV         LANG C.UTF-8
-RUN         apt-get update -qq && apt-get install -y build-essential cmake patch lua5.2 lua5.2-dev
+ENV         DEBIAN_FRONTEND=noninteractive 
+RUN         apt-get update -qq && apt-get install -y build-essential cmake patch lua5.2 lua5.2-dev librtmidi-dev
 COPY        ./play.cpp /var/play/
 COPY        ./CMakeLists.txt /var/play/
 COPY        ./*.lua /var/play
